@@ -53,7 +53,7 @@ import Vue from "vue";
 import storage from "store";
 // import Header from "../Header/index";
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
-import NavMenu from "../NavMenu/index";
+import NavMenu from "../navmenu/index";
 import { Layout, Icon, Select } from "ant-design-vue";
 // import { menuList } from "@/router/index";
 import Header from "../Header";
@@ -103,7 +103,7 @@ export default {
 <style lang="less">
 .ant-layout {
   min-height: 100%;
-  background-image: url("../../assets/images/bg.png");
+  // background-image: url("../../assets/images/bg.png");
   overflow-y: auto;
 }
 .ant-layout-sider {
@@ -115,7 +115,7 @@ export default {
 }
 .ant-layout-content {
   min-height: 100%;
-  background: rgb(8, 47, 95);
+  // background: rgb(8, 47, 95);
   padding: 24px;
   margin: 0;
   min-height: 280px;

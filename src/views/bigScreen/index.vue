@@ -2,7 +2,7 @@
   <div class="bigScreen">
     <div class="left-main" v-show="isNav">
       <div class="nav">
-        <NavMenu />
+        <!-- <NavMenu /> -->
       </div>
     </div>
     <div class="rigth-main">
@@ -24,13 +24,13 @@
 <script>
 import Vue from "vue";
 import { Button } from "ant-design-vue";
-import NavMenu from "../../components/NavMenu/index";
+// import NavMenu from "../../components/navmenu/index";
 Vue.use(Button);
 
 export default {
   name: "BigScreen",
   components: {
-    NavMenu
+    // NavMenu
   },
   data() {
     return {

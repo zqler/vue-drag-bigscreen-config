@@ -93,50 +93,50 @@ module.exports = {
         })
       );
     }
-    config.optimization = {
-      runtimeChunk: "single",
-      splitChunks: {
-        chunks: "all",
-        maxInitialRequests: Infinity,
-        minSize: 1000 * 60,
-        cacheGroups: {
-          // vendor: {
-          //   test: /[\\/]node_modules[\\/]/,
-          //   name(module) {
-          //     // 排除node_modules 然后吧 @ 替换为空 ,考虑到服务器的兼容
-          //     const packageName = module.context.match(
-          //       /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-          //     )[1];
-          //     return `npm.${packageName.replace("@", "")}`;
-          //   }
-          // }
-          vendor: {
-            chunks: "all",
-            test: /node_modules/,
-            name: "vendor",
-            minChunks: 1,
-            maxInitialRequests: 5,
-            minSize: 0,
-            priority: 100
-          },
-          common: {
-            chunks: "all",
-            test: /[\\/]src[\\/]js[\\/]/,
-            name: "common",
-            minChunks: 2,
-            maxInitialRequests: 5,
-            minSize: 0,
-            priority: 60
-          },
-          styles: {
-            name: "styles",
-            test: /\.(sa|sc|c)ss$/,
-            chunks: "all",
-            enforce: true
-          }
-        }
-      }
-    };
+    // config.optimization = {
+    //   runtimeChunk: "single",
+    //   splitChunks: {
+    //     chunks: "all",
+    //     maxInitialRequests: Infinity,
+    //     minSize: 1000 * 60,
+    //     cacheGroups: {
+    //       // vendor: {
+    //       //   test: /[\\/]node_modules[\\/]/,
+    //       //   name(module) {
+    //       //     // 排除node_modules 然后吧 @ 替换为空 ,考虑到服务器的兼容
+    //       //     const packageName = module.context.match(
+    //       //       /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+    //       //     )[1];
+    //       //     return `npm.${packageName.replace("@", "")}`;
+    //       //   }
+    //       // }
+    //       vendor: {
+    //         chunks: "all",
+    //         test: /node_modules/,
+    //         name: "vendor",
+    //         minChunks: 1,
+    //         maxInitialRequests: 5,
+    //         minSize: 0,
+    //         priority: 100
+    //       },
+    //       common: {
+    //         chunks: "all",
+    //         test: /[\\/]src[\\/]js[\\/]/,
+    //         name: "common",
+    //         minChunks: 2,
+    //         maxInitialRequests: 5,
+    //         minSize: 0,
+    //         priority: 60
+    //       },
+    //       styles: {
+    //         name: "styles",
+    //         test: /\.(sa|sc|c)ss$/,
+    //         chunks: "all",
+    //         enforce: true
+    //       }
+    //     }
+    //   }
+    // };
     // 取消webpack警告的性能提示
     // config.performance = {
     //   hints: "warning",

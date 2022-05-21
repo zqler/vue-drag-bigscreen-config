@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     getBreadcrumb() {
-      console.log(match);
       let match = this.$route.matched.filter(
         item => item.meta && item.meta.title
       );
@@ -33,7 +32,6 @@ export default {
       this.leveList = match.filter(
         item => item.meta && item.meta.title && item.meta.breadcrumb !== false
       );
-      console.log(match);
     },
     handleLink(item) {
       const { redirect, path } = item;
