@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="80px" viewBox="0 0 96 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>工厂</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#ABF1B1" offset="0%"></stop>
+            <stop stop-color="#73DF79" offset="100%"></stop>
+        </linearGradient>
+        <path d="M48.1241712,0.145515748 L48.1241712,21.6688779 L24.1261948,9.68087512 L24.1261948,21.6908487 L0.128218455,9.68087512 L0.128218455,64.1455157 L80.1218585,64.1455157 L80.1218585,0.145515748 L48.1241712,0.145515748 Z M21.1369996,45.1522732 L11.1379391,45.1522732 L11.1379391,35.1555255 L21.1369996,35.1555255 L21.1369996,45.1522732 Z M45.1349759,45.1522732 L35.1359155,45.1522732 L35.1359155,35.1555255 L45.1349759,35.1555255 L45.1349759,45.1522732 Z M69.1329523,45.1522732 L59.1338919,45.1522732 L59.1338919,35.1555255 L69.1329523,35.1555255 L69.1329523,45.1522732 Z M69.1329523,25.1472142 L59.1338919,25.1472142 L59.1338919,15.1446846 L69.1329523,15.1446846 L69.1329523,25.1472142 Z" id="path-2"></path>
+        <filter x="-15.0%" y="-18.8%" width="130.0%" height="137.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.198394277   0 0 0 0 0.894248188   0 0 0 0 0.237052828  0 0 0 0.423841783 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-866.000000, -154.000000)" fill-rule="nonzero">
+            <g id="工厂" transform="translate(874.000000, 162.000000)">
+                <g id="形状">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
