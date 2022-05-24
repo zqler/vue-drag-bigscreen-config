@@ -1,7 +1,7 @@
 <template>
   <div class="big-screen-config">
     <div class="left">
-      <leftComponentVue @on-drag="onDragCb"></leftComponentVue>
+      <leftComponentVue @on-add="onAdddCb"></leftComponentVue>
     </div>
     <div class="box">
       <vue-ruler-tool
@@ -29,11 +29,15 @@
             :isConflictCheck="true"
             :snap="true"
             :snapTolerance="20"
+            :resizable="true"
             @refLineParams="getRefLineParams"
             class="test1"
+            :draggable="isEdit"
             @dragstop="onDrag"
             @resizing="onResize"
+            @resizestop="onResizestop"
             @activated="onActivated(item)"
+            @delete="onDelete"
           >
             <component
               :is="componentConfig[item.componentId]"
@@ -87,6 +91,7 @@ export default {
   },
   data() {
     return {
+      isEdit: true,
       vLine: [],
       hLine: [],
       presetLine: [
@@ -110,13 +115,18 @@ export default {
     console.log(this.$refs.draggableBox.offsetTop);
   },
   methods: {
-    //拖拽组件结束获取当前组件的相关信息
-    onDragCb(component) {
+    //从组件库拖组件放到拖拽区域
+    onAdddCb(component) {
       const { x, y } = component;
+      console.log(x, y);
       this.components.push({ ...component });
       console.log(component);
     },
     updateLayer() {},
+    onResizestop() {},
+    onDelete(data) {
+      console.log(data);
+    },
     onResize: function(x, y, width, height) {
       console.log(x, y, width, height);
       this.x = x;

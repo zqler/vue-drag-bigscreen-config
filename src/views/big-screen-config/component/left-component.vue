@@ -1,25 +1,23 @@
 <template>
-  <Draggable
-    v-model="componentList"
-    group="people"
-    :clone="cloneComponent"
-    @choose="choose($event)"
-    @start="drag = true"
-    @end="onEnd($event)"
-  >
-    <div
+  <div class="select-component-box">
+    <Draggable
       v-for="element in componentList"
       :key="element.id"
-      class="component-box"
+      v-model="componentList"
+      group="people"
+      :clone="cloneComponent"
+      @choose="choose($event)"
+      @start="drag = true"
+      @end="onEnd($event)"
     >
-      {{ element.name }}
-    </div>
-  </Draggable>
+      <div class="component-box">
+        {{ element.name }}
+      </div>
+    </Draggable>
+  </div>
 </template>
 
 <script>
-import { template } from "@babel/core";
-import { thisTypeAnnotation } from "@babel/types";
 import Draggable from "vuedraggable";
 export default {
   name: "LeftComponent",
@@ -57,6 +55,7 @@ export default {
   methods: {
     choose(event) {
       this.startChooseEvt = event;
+      console.log(event);
     },
     cloneComponent(origin) {
       this.tempActiveData = null;
@@ -69,14 +68,15 @@ export default {
     },
     onEnd(event) {
       const { offsetX, offsetY } = this.startChooseEvt.originalEvent;
-      console.log(offsetX, offsetY, event.originalEvent);
-      this.tempActiveData.x = parseInt(event.originalEvent.x - offsetX, 10);
-      this.tempActiveData.y = parseInt(event.originalEvent.y - offsetY, 10);
-      console.log(this.tempActiveData);
-      // this.activeData = this.tempActiveData;
-      // this.creatLayere(); //创建图层
-      // this.$setWidegetActived();
-      this.$emit("on-drag", this.tempActiveData);
+      this.tempActiveData.x = parseInt(
+        event.originalEvent.offsetX - offsetX,
+        10
+      );
+      this.tempActiveData.y = parseInt(
+        event.originalEvent.offsetY - offsetY,
+        10
+      );
+      this.$emit("on-add", this.tempActiveData);
     }
   }
 };
