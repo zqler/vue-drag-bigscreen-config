@@ -1,5 +1,5 @@
 <template>
-  <div class="big-screen-config">
+  <div class="big-screen-config" style="position: relative;">
     <div class="left">
       <leftComponentVue @on-add="onAdddCb"></leftComponentVue>
     </div>
@@ -10,7 +10,7 @@
         :v-model="presetLine"
       >
         <div
-          style="height: 800px; width: 1750px;position: relative;margin: 0 auto"
+          style="height: 800px; width: 1750px;margin: 0 auto"
           class="grid"
           ref="draggableBox"
         >
@@ -33,7 +33,8 @@
             @refLineParams="getRefLineParams"
             class="test1"
             :draggable="isEdit"
-            @dragstop="onDrag"
+            @dragging="dragging"
+            @dragstop="onDragStop"
             @resizing="onResize"
             @resizestop="onResizestop"
             @activated="onActivated(item)"
@@ -43,6 +44,7 @@
               :is="componentConfig[item.componentId]"
               :option="item"
               @on-update="updateLayer"
+              @mousedown="mousedown"
             >
             </component>
             <div>组件：{{ item.name }}</div>
@@ -108,24 +110,43 @@ export default {
         }
       ],
       componentConfig: [104, 105],
-      activeData: null
+      activeData: null,
+      origin: {
+        //拖拽原点坐标
+        x: 0,
+        y: 0
+      }
     };
   },
   mounted() {
-    console.log(this.$refs.draggableBox.offsetTop);
+    console.log(this.$refs.draggableBox.offsetHeight);
+    this.$nextTick(() => {
+      const { offsetLeft, offsetTop } = this.$refs.draggableBox;
+      this.origin = {
+        x: offsetLeft,
+        y: offsetTop
+      };
+      console.log(offsetLeft, offsetTop);
+    });
   },
   methods: {
     //从组件库拖组件放到拖拽区域
     onAdddCb(component) {
-      const { x, y } = component;
-      console.log(x, y);
+      // let { x, y } = component;
+      // x = x - this.origin.x;
+      // y = y - this.origin.y;
       this.components.push({ ...component });
       console.log(component);
     },
-    updateLayer() {},
+    updateLayer(data) {
+      console.log(data, "组件更新");
+    },
     onResizestop() {},
     onDelete(data) {
       console.log(data);
+    },
+    mousedown(e) {
+      console.log(e, 11111111111);
     },
     onResize: function(x, y, width, height) {
       console.log(x, y, width, height);
@@ -134,10 +155,13 @@ export default {
       this.width = width;
       this.height = height;
     },
-    onDrag: function(x, y) {
+    onDragStop: function(x, y) {
       this.x = x;
       this.y = y;
       console.log(x, y, 1111111);
+    },
+    dragging(data) {
+      console.log(data);
     },
     onActivated(currentItem) {
       console.log(currentItem);
@@ -171,15 +195,11 @@ export default {
 <style lang="less" scoped>
 .big-screen-config {
   position: relative;
-  .left {
-    position: absolute;
-  }
   .box {
     position: absolute;
     left: 220px;
   }
 }
-
 .test1 {
   background-color: rgb(239, 154, 154);
 }

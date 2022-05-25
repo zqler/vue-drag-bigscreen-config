@@ -68,12 +68,13 @@ export default {
     },
     onEnd(event) {
       const { offsetX, offsetY } = this.startChooseEvt.originalEvent;
+      console.log(event.originalEvent);
       this.tempActiveData.x = parseInt(
-        event.originalEvent.offsetX - offsetX,
+        event.originalEvent.x - offsetX - 480,
         10
       );
       this.tempActiveData.y = parseInt(
-        event.originalEvent.offsetY - offsetY,
+        event.originalEvent.y - offsetY - 154,
         10
       );
       this.$emit("on-add", this.tempActiveData);
@@ -83,6 +84,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.select-component-box {
+  position: absolute;
+}
 .component-box {
   width: 200px;
   height: 200px;
